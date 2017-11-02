@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecisionTreeWriter", "DecisionTreeWriter\DecisionTreeWriter.csproj", "{293E9C8D-84AC-43D2-9F86-719468AB9E06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{5B818AC4-0BF6-4A71-A436-A6775A2749A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager", "FileManager\FileManager.csproj", "{D5DD19AC-5A0A-4A29-9693-41A36B50BB73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager", "DataManager\DataManager.csproj", "{ADA85E08-9896-42CF-8D9E-7A3D1FD7C6A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManagerTests", "FileManagerTests\FileManagerTests.csproj", "{51791267-03F8-4796-8820-7158047171C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestSettings", "TestSettings", "{5B2E70C0-A869-4787-9165-39EB6B8BA01E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{293E9C8D-84AC-43D2-9F86-719468AB9E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{293E9C8D-84AC-43D2-9F86-719468AB9E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{293E9C8D-84AC-43D2-9F86-719468AB9E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{293E9C8D-84AC-43D2-9F86-719468AB9E06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B818AC4-0BF6-4A71-A436-A6775A2749A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B818AC4-0BF6-4A71-A436-A6775A2749A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B818AC4-0BF6-4A71-A436-A6775A2749A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B818AC4-0BF6-4A71-A436-A6775A2749A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5DD19AC-5A0A-4A29-9693-41A36B50BB73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5DD19AC-5A0A-4A29-9693-41A36B50BB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5DD19AC-5A0A-4A29-9693-41A36B50BB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5DD19AC-5A0A-4A29-9693-41A36B50BB73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADA85E08-9896-42CF-8D9E-7A3D1FD7C6A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADA85E08-9896-42CF-8D9E-7A3D1FD7C6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADA85E08-9896-42CF-8D9E-7A3D1FD7C6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADA85E08-9896-42CF-8D9E-7A3D1FD7C6A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51791267-03F8-4796-8820-7158047171C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51791267-03F8-4796-8820-7158047171C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51791267-03F8-4796-8820-7158047171C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51791267-03F8-4796-8820-7158047171C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
