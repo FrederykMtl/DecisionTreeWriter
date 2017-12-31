@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using DataManager;
 using DecisionTreeWriter.Resources;
+using DTO;
 using FileManager;
 
 namespace DecisionTreeWriter.Presenters
@@ -13,7 +14,6 @@ namespace DecisionTreeWriter.Presenters
         private readonly TabControl _treeDesignerTabControl;
         private readonly Dictionary<string, PanelPresenter> _panelPresenters;
         private readonly INodeListManager _nodeListManager;
-        private readonly IFileController _fileController;
 
         /// <summary>
         /// Default constructor
@@ -25,8 +25,7 @@ namespace DecisionTreeWriter.Presenters
             _decisionTreeMenu = decisionTreeMenu;
             _treeDesignerTabControl = treeDesignerTabControl;
             _panelPresenters = new Dictionary<string, PanelPresenter>();
-            _fileController = new FileController();
-            _nodeListManager = new NodeListManager(_fileController);
+            _nodeListManager = new NodeListManager(new FileController());
         }
 
         /// <summary>
@@ -58,9 +57,17 @@ namespace DecisionTreeWriter.Presenters
         /// <param name="eventArgs"></param>
         public void TabChanged(object sender, EventArgs eventArgs)
         {
-            ManageTreeMenuState(((TabControl)sender).SelectedTab);
+            TabControl control = (TabControl) sender;
+
+            if(control.SelectedTab != null)
+                ManageTreeMenuState(control.SelectedTab);
         }
 
+        /// <summary>
+        /// Finds a panel in the dictionary
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         private PanelPresenter FindPanelByName(string name)
         {
             if(!_panelPresenters.ContainsKey(name))
@@ -75,6 +82,9 @@ namespace DecisionTreeWriter.Presenters
         /// <param name="tab"></param>
         private void ManageTreeMenuState(TabPage tab)
         {
+            if(tab == null)
+                return;
+
             var presenter = FindPanelByName(tab.Text);
 
             if (presenter != null)
@@ -133,6 +143,19 @@ namespace DecisionTreeWriter.Presenters
         public void AddRightNodeClicked(object sender, EventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        public void SaveTree(string panelName, UserConfigurations configurations)
+        {
+            var panel = FindPanelByName(panelName);
+            panel.SaveTreeToFile(new FileController(), new XmlDocumentBuilder(), configurations);
+        }
+
+        public void RemoveCurrentNode()
+        {
+            var presenter = FindPanelByName(_treeDesignerTabControl.SelectedTab.Text);
+
+            presenter?.RemoveCurrentNode();
         }
     }
 }

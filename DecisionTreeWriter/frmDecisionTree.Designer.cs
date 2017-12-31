@@ -45,13 +45,18 @@ namespace DecisionTreeWriter
             this.addRightNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addLeftNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addSubTreeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.removeNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.classGenerationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.javaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.classLanguageGenerationOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.CSharpOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.CppOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.JavaOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.PythonOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.generateXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tcTreeDesigner = new System.Windows.Forms.TabControl();
+            this.noCodeGenerationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDecisionTree.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,37 +82,41 @@ namespace DecisionTreeWriter
             this.removeCurrentTreeToolStripMenuItem,
             this.removeAllTreesToolStripMenuItem});
             this.tsFileMenu.Name = "tsFileMenu";
-            this.tsFileMenu.Size = new System.Drawing.Size(140, 29);
+            this.tsFileMenu.Size = new System.Drawing.Size(50, 29);
             this.tsFileMenu.Text = "&File";
             // 
             // openExistingTreeToolStripMenuItem
             // 
             this.openExistingTreeToolStripMenuItem.Name = "openExistingTreeToolStripMenuItem";
-            this.openExistingTreeToolStripMenuItem.Size = new System.Drawing.Size(260, 30);
-            this.openExistingTreeToolStripMenuItem.Text = "Open Existing Tree";
+            this.openExistingTreeToolStripMenuItem.Size = new System.Drawing.Size(241, 30);
+            this.openExistingTreeToolStripMenuItem.Text = "&Open Existing Tree";
+            this.openExistingTreeToolStripMenuItem.Click += new System.EventHandler(this.openExistingTreeToolStripMenuItem_Click);
             // 
             // saveCurrentTreeToolStripMenuItem
             // 
             this.saveCurrentTreeToolStripMenuItem.Name = "saveCurrentTreeToolStripMenuItem";
-            this.saveCurrentTreeToolStripMenuItem.Size = new System.Drawing.Size(260, 30);
-            this.saveCurrentTreeToolStripMenuItem.Text = "Save Current Tree";
+            this.saveCurrentTreeToolStripMenuItem.Size = new System.Drawing.Size(241, 30);
+            this.saveCurrentTreeToolStripMenuItem.Text = "&Save Current Tree";
+            this.saveCurrentTreeToolStripMenuItem.Click += new System.EventHandler(this.saveCurrentTreeToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(257, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(238, 6);
             // 
             // removeCurrentTreeToolStripMenuItem
             // 
             this.removeCurrentTreeToolStripMenuItem.Name = "removeCurrentTreeToolStripMenuItem";
-            this.removeCurrentTreeToolStripMenuItem.Size = new System.Drawing.Size(260, 30);
-            this.removeCurrentTreeToolStripMenuItem.Text = "Remove Current Tree";
+            this.removeCurrentTreeToolStripMenuItem.Size = new System.Drawing.Size(241, 30);
+            this.removeCurrentTreeToolStripMenuItem.Text = "&Close Current Tab";
+            this.removeCurrentTreeToolStripMenuItem.Click += new System.EventHandler(this.removeCurrentTreeToolStripMenuItem_Click);
             // 
             // removeAllTreesToolStripMenuItem
             // 
             this.removeAllTreesToolStripMenuItem.Name = "removeAllTreesToolStripMenuItem";
-            this.removeAllTreesToolStripMenuItem.Size = new System.Drawing.Size(260, 30);
-            this.removeAllTreesToolStripMenuItem.Text = "Remove All Trees";
+            this.removeAllTreesToolStripMenuItem.Size = new System.Drawing.Size(241, 30);
+            this.removeAllTreesToolStripMenuItem.Text = "Close &All Tabs";
+            this.removeAllTreesToolStripMenuItem.Click += new System.EventHandler(this.removeAllTreesToolStripMenuItem_Click);
             // 
             // tsTreeMenu
             // 
@@ -117,7 +126,9 @@ namespace DecisionTreeWriter
             this.addRootToolStripMenuItem,
             this.addRightNodeToolStripMenuItem,
             this.addLeftNodeToolStripMenuItem,
-            this.addSubTreeToolStripMenuItem});
+            this.addSubTreeToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.removeNodeToolStripMenuItem});
             this.tsTreeMenu.Name = "tsTreeMenu";
             this.tsTreeMenu.Size = new System.Drawing.Size(55, 29);
             this.tsTreeMenu.Text = "&Tree";
@@ -125,27 +136,27 @@ namespace DecisionTreeWriter
             // createNewTreeToolStripMenuItem
             // 
             this.createNewTreeToolStripMenuItem.Name = "createNewTreeToolStripMenuItem";
-            this.createNewTreeToolStripMenuItem.Size = new System.Drawing.Size(227, 30);
+            this.createNewTreeToolStripMenuItem.Size = new System.Drawing.Size(226, 30);
             this.createNewTreeToolStripMenuItem.Text = "&Create New Tree";
             this.createNewTreeToolStripMenuItem.Click += new System.EventHandler(this.createNewTreeToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(224, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(223, 6);
             // 
             // addRootToolStripMenuItem
             // 
             this.addRootToolStripMenuItem.Enabled = false;
             this.addRootToolStripMenuItem.Name = "addRootToolStripMenuItem";
-            this.addRootToolStripMenuItem.Size = new System.Drawing.Size(227, 30);
+            this.addRootToolStripMenuItem.Size = new System.Drawing.Size(226, 30);
             this.addRootToolStripMenuItem.Text = "Add &Root";
             // 
             // addRightNodeToolStripMenuItem
             // 
             this.addRightNodeToolStripMenuItem.Enabled = false;
             this.addRightNodeToolStripMenuItem.Name = "addRightNodeToolStripMenuItem";
-            this.addRightNodeToolStripMenuItem.Size = new System.Drawing.Size(227, 30);
+            this.addRightNodeToolStripMenuItem.Size = new System.Drawing.Size(226, 30);
             this.addRightNodeToolStripMenuItem.Text = "Add Right &Node";
             this.addRightNodeToolStripMenuItem.Click += new System.EventHandler(this.addNodeToolStripMenuItem_Click);
             // 
@@ -153,63 +164,88 @@ namespace DecisionTreeWriter
             // 
             this.addLeftNodeToolStripMenuItem.Enabled = false;
             this.addLeftNodeToolStripMenuItem.Name = "addLeftNodeToolStripMenuItem";
-            this.addLeftNodeToolStripMenuItem.Size = new System.Drawing.Size(227, 30);
+            this.addLeftNodeToolStripMenuItem.Size = new System.Drawing.Size(226, 30);
             this.addLeftNodeToolStripMenuItem.Text = "Add &Left Node";
             // 
             // addSubTreeToolStripMenuItem
             // 
             this.addSubTreeToolStripMenuItem.Enabled = false;
             this.addSubTreeToolStripMenuItem.Name = "addSubTreeToolStripMenuItem";
-            this.addSubTreeToolStripMenuItem.Size = new System.Drawing.Size(227, 30);
+            this.addSubTreeToolStripMenuItem.Size = new System.Drawing.Size(226, 30);
             this.addSubTreeToolStripMenuItem.Text = "Add &SubTree";
             this.addSubTreeToolStripMenuItem.Click += new System.EventHandler(this.addSubTreeToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(223, 6);
+            // 
+            // removeNodeToolStripMenuItem
+            // 
+            this.removeNodeToolStripMenuItem.Enabled = false;
+            this.removeNodeToolStripMenuItem.Name = "removeNodeToolStripMenuItem";
+            this.removeNodeToolStripMenuItem.Size = new System.Drawing.Size(226, 30);
+            this.removeNodeToolStripMenuItem.Text = "Re&move Node";
+            this.removeNodeToolStripMenuItem.Click += new System.EventHandler(this.removeNodeToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.classGenerationToolStripMenuItem,
+            this.classLanguageGenerationOption,
+            this.toolStripSeparator1,
             this.generateXMLToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(88, 29);
-            this.optionsToolStripMenuItem.Text = "&Options";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(110, 29);
+            this.optionsToolStripMenuItem.Text = "&Generation";
             // 
-            // classGenerationToolStripMenuItem
+            // classLanguageGenerationOption
             // 
-            this.classGenerationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cToolStripMenuItem,
-            this.cToolStripMenuItem1,
-            this.javaToolStripMenuItem});
-            this.classGenerationToolStripMenuItem.Name = "classGenerationToolStripMenuItem";
-            this.classGenerationToolStripMenuItem.Size = new System.Drawing.Size(227, 30);
-            this.classGenerationToolStripMenuItem.Text = "&Class generation";
+            this.classLanguageGenerationOption.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CSharpOption,
+            this.CppOption,
+            this.JavaOption,
+            this.PythonOption,
+            this.noCodeGenerationToolStripMenuItem});
+            this.classLanguageGenerationOption.Name = "classLanguageGenerationOption";
+            this.classLanguageGenerationOption.Size = new System.Drawing.Size(214, 30);
+            this.classLanguageGenerationOption.Text = "&Class language";
             // 
-            // cToolStripMenuItem
+            // CSharpOption
             // 
-            this.cToolStripMenuItem.Checked = true;
-            this.cToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cToolStripMenuItem.Name = "cToolStripMenuItem";
-            this.cToolStripMenuItem.Size = new System.Drawing.Size(132, 30);
-            this.cToolStripMenuItem.Text = "C#";
+            this.CSharpOption.Checked = true;
+            this.CSharpOption.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CSharpOption.Name = "CSharpOption";
+            this.CSharpOption.Size = new System.Drawing.Size(254, 30);
+            this.CSharpOption.Text = "C#";
             // 
-            // cToolStripMenuItem1
+            // CppOption
             // 
-            this.cToolStripMenuItem1.Name = "cToolStripMenuItem1";
-            this.cToolStripMenuItem1.Size = new System.Drawing.Size(132, 30);
-            this.cToolStripMenuItem1.Text = "C++";
+            this.CppOption.Name = "CppOption";
+            this.CppOption.Size = new System.Drawing.Size(254, 30);
+            this.CppOption.Text = "C++";
             // 
-            // javaToolStripMenuItem
+            // JavaOption
             // 
-            this.javaToolStripMenuItem.Name = "javaToolStripMenuItem";
-            this.javaToolStripMenuItem.Size = new System.Drawing.Size(132, 30);
-            this.javaToolStripMenuItem.Text = "Java";
+            this.JavaOption.Name = "JavaOption";
+            this.JavaOption.Size = new System.Drawing.Size(254, 30);
+            this.JavaOption.Text = "Java";
+            // 
+            // PythonOption
+            // 
+            this.PythonOption.Name = "PythonOption";
+            this.PythonOption.Size = new System.Drawing.Size(254, 30);
+            this.PythonOption.Text = "Python";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(211, 6);
             // 
             // generateXMLToolStripMenuItem
             // 
-            this.generateXMLToolStripMenuItem.Checked = true;
-            this.generateXMLToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.generateXMLToolStripMenuItem.Name = "generateXMLToolStripMenuItem";
-            this.generateXMLToolStripMenuItem.Size = new System.Drawing.Size(227, 30);
-            this.generateXMLToolStripMenuItem.Text = "Generate &XML";
+            this.generateXMLToolStripMenuItem.Size = new System.Drawing.Size(214, 30);
+            this.generateXMLToolStripMenuItem.Text = "&Options";
             // 
             // tcTreeDesigner
             // 
@@ -221,6 +257,12 @@ namespace DecisionTreeWriter
             this.tcTreeDesigner.SelectedIndex = 0;
             this.tcTreeDesigner.Size = new System.Drawing.Size(1207, 544);
             this.tcTreeDesigner.TabIndex = 2;
+            // 
+            // noCodeGenerationToolStripMenuItem
+            // 
+            this.noCodeGenerationToolStripMenuItem.Name = "noCodeGenerationToolStripMenuItem";
+            this.noCodeGenerationToolStripMenuItem.Size = new System.Drawing.Size(254, 30);
+            this.noCodeGenerationToolStripMenuItem.Text = "No code generation";
             // 
             // FrmDecisionTree
             // 
@@ -255,11 +297,16 @@ namespace DecisionTreeWriter
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem optionsToolStripMenuItem;
-        private ToolStripMenuItem classGenerationToolStripMenuItem;
-        private ToolStripMenuItem cToolStripMenuItem;
-        private ToolStripMenuItem cToolStripMenuItem1;
-        private ToolStripMenuItem javaToolStripMenuItem;
+        private ToolStripMenuItem classLanguageGenerationOption;
+        private ToolStripMenuItem CSharpOption;
+        private ToolStripMenuItem CppOption;
+        private ToolStripMenuItem JavaOption;
         private ToolStripMenuItem generateXMLToolStripMenuItem;
         private ToolStripMenuItem addLeftNodeToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripMenuItem removeNodeToolStripMenuItem;
+        private ToolStripMenuItem PythonOption;
+        private ToolStripMenuItem noCodeGenerationToolStripMenuItem;
     }
 }

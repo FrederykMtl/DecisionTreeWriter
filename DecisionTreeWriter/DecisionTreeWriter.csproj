@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\DecisionTreeExtensions.cs" />
+    <Compile Include="Factories\StrategyFactory.cs" />
     <Compile Include="frmAddTree.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +71,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UIResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Strategy\CSharpGenerationStrategy.cs" />
+    <Compile Include="Strategy\ICodeGenerationStrategy.cs" />
     <Compile Include="UserControl\VisualNode.cs">
       <SubType>UserControl</SubType>
     </Compile>

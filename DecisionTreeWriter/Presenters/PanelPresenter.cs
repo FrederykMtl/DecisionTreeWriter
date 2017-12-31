@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Xml;
 using DataManager;
+using DecisionTreeWriter.Factories;
 using DecisionTreeWriter.Managers;
 using DecisionTreeWriter.Resources;
+using DecisionTreeWriter.Strategy;
 using DecisionTreeWriter.UserControl;
 using DTO;
 using FileManager;
@@ -15,6 +16,7 @@ namespace DecisionTreeWriter.Presenters
     public class PanelPresenter
     {
         #region Properties
+
         private readonly Panel _panel;
         private readonly DecisionTreeDrawingManager _manager;
         private Node _root;
@@ -25,7 +27,11 @@ namespace DecisionTreeWriter.Presenters
         public bool HasNodes => _manager.HasNodes;
         public bool HasSelectedNode => _selectedNode != null;
 
-        public Control GetPanel() { return _panel; }
+        public Control GetPanel()
+        {
+            return _panel;
+        }
+
         #endregion
 
         /// <summary>
@@ -54,6 +60,11 @@ namespace DecisionTreeWriter.Presenters
             _panel.Resize += _panel_Resize;
         }
 
+        /// <summary>
+        /// Handles the resize of the panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _panel_Resize(object sender, EventArgs e)
         {
             if (!HasRoot)
@@ -99,7 +110,7 @@ namespace DecisionTreeWriter.Presenters
         {
             MouseEventArgs arg = e as MouseEventArgs;
 
-            if(arg==null)
+            if (arg == null)
                 return;
 
             if (arg.Button == MouseButtons.Left)
@@ -121,7 +132,7 @@ namespace DecisionTreeWriter.Presenters
         /// <param name="sender">object tha raised the event.</param>
         /// <param name="e">paint event arguments</param>
         private void _panel_Paint(object sender, PaintEventArgs e)
-        {            
+        {
             _manager.RedrawAllRelationshipLines();
         }
 
@@ -167,7 +178,7 @@ namespace DecisionTreeWriter.Presenters
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void LeftNodeMenu_Click(object sender, EventArgs e)
-        {          
+        {
             NodeToAdd_AddNodeEvent(_selectedNode, false);
         }
 
@@ -211,6 +222,10 @@ namespace DecisionTreeWriter.Presenters
             }
         }
 
+        /// <summary>
+        /// Sets the currently selected node
+        /// </summary>
+        /// <param name="selectedNode"></param>
         private void NodeToAddOnNodeSelectedEvent(VisualNodeBase selectedNode)
         {
             _selectedNode = selectedNode;
@@ -247,12 +262,67 @@ namespace DecisionTreeWriter.Presenters
             //_nodes.Add(new VisualRootNode(treeName));
         }
 
-        
-        public void SaveTreeToFile(IFileController fileController, IXmlDocumentBuilder builder)
+        /// <summary>
+        /// Saves the current tree to an XML file
+        /// </summary>
+        /// <param name="fileController"></param>
+        /// <param name="builder"></param>
+        /// <param name="configurations"></param>
+        public void SaveTreeToFile(IFileController fileController, IXmlDocumentBuilder builder, UserConfigurations configurations)
         {
             var document = builder.Build(_root, _panel.Name);
 
             fileController.SaveXmlFileContent(_panel.Name, document, "XML");
+
+            if (configurations.Language == Languages.NoCodeGeneration)
+                return;
+
+            var generationStrategy = StrategyFactory.GetClassInstance(configurations, fileController);
+
+            GenerateAndSaveCodeClass(_root, generationStrategy, fileController);
+        }
+
+        private static void GenerateAndSaveCodeClass(Node node, ICodeGenerationStrategy generationStrategy, IFileController fileController)
+        {
+            var codeclass = generationStrategy.GenerateClass(node);
+
+            fileController.SaveTextFileContent(node.Name, codeclass, generationStrategy + "Code");
+
+            while (node.LeftNode != null)
+            {
+                GenerateAndSaveCodeClass(node.LeftNode, generationStrategy, fileController);
+            }
+
+            while (node.RightNode != null)
+            {
+                GenerateAndSaveCodeClass(node.RightNode, generationStrategy, fileController);
+            }
+        }
+
+        /// <summary>
+        /// Removes the currently selected node.
+        /// </summary>
+        public void RemoveCurrentNode()
+        {
+            if (_selectedNode == null || !_selectedNode.HasParents())
+                return;
+
+            var parents = _selectedNode.GetParents();
+
+            parents.ForEach(RemoveNodeFromParent);
+        }
+
+        /// <summary>
+        /// Removes a node and its attached subnodes
+        /// </summary>
+        /// <param name="node"></param>
+        private void RemoveNodeFromParent(VisualNodeBase node)
+        {
+            if (node.LeftChild == _selectedNode)
+                node.LeftChild = null;
+
+            if (node.RightChild == _selectedNode)
+                node.RightChild = null;
         }
     }
 }

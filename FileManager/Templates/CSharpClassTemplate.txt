@@ -1,0 +1,18 @@
+﻿using DTO;
+
+namespace RNPC.Subconscious
+{
+    internal class {0} : AbstractDecisionNode
+    {
+		public int TestValue = {1};
+
+        public override Action Evaluate(CharacterTraits traits)
+        {
+            //TODO: Replace
+            if(EVALUATE_CONDITION)
+                LeftNode.Evaluate();
+            else
+                RightNode.Evaluate();
+        }
+    }
+}

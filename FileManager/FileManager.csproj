@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DecisionTreeFileWriter.cs" />
     <Compile Include="DirectoryManager.cs" />
     <Compile Include="FileController.cs" />
     <Compile Include="Interfaces\IXmlDocumentBuilder.cs" />
@@ -60,6 +61,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Constants.resx</DependentUpon>
     </Compile>
+    <Content Include="Templates\CSharpClassTemplate.txt" />
     <Compile Include="XmlDocumentBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +87,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
